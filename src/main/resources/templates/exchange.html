@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="mb-3">
+        <h1 class="text-center">Рассчёт валют из рубля</h1>
+        <form action="/money" method="get">
+            <p>Валюта из которой надо перевести</p>
+            <div class="row g-2">
+                <input name="count" type="number" class="form-control" id="valueFrom" placeholder="Введите значение">
+                <select name="typeOff" class="form-select mb-3" aria-label="Large select example">
+                    <option selected>Ничего</option>
+                    <option th:each="el : ${courses}" th:value="${el.getName()}" th:text="${el.getName()}"></option>
+                </select>
+            </div>
+            <hr>
+            <p>Валюта в которую надо перевести</p>
+            <select name="typeOn" class="form-select mb-3" aria-label="Large select example">
+                <option selected>Ничего</option>
+                <option>Рубль</option>
+            </select>
+            <input type="submit" class="btn btn-primary mt-1" value="Перевести">
+        </form>
+        <h1 class="text-center mt-5"><b>Итог: </b><span th:text="${finalResult}"></span></h1>
+    </div>
+</div>
+
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}"></title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="mb-3">
+    <h1 class="text-center">Калькулятор</h1>
+    <form action="/calc" method="post">
+      <label for="mathTaker" class="form-label">Математическое выражение</label>
+      <input name="mathematical_expression" type="text" class="form-control" id="mathTaker" placeholder="2+2">
+      <input type="submit" class="btn btn-primary mt-1" value="Решить">
+    </form>
+  </div>
+</div>
+
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/bootstrap.bundle.js"></script>
+<script>
+  const input = document.getElementById('mathTaker');
+  const regex = /^[0-9+\-*/]+$/; // регулярное выражение для цифр и букв
+
+  input.addEventListener('input', (event) => {
+    const value = event.target.value;
+    if (!regex.test(value)) {
+      event.target.value = ''; // очистить input
+      // или можно использовать event.preventDefault() чтобы не давать вводить неправильные символы
+    }
+  });
+</script>
+</body>
+</html>
